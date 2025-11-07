@@ -29,3 +29,6 @@ A ROS 2 package providing a **Stewart platform (6-DoF parallel manipulator)** mo
 # from your ROS 2 workspace root
 colcon build --packages-select stewart_platform
 source install/setup.bash
+
+# launch Gazebo + spawn SDF + start IK node
+ros2 launch stewart_platform onlystewart.launch.py
