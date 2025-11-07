@@ -1,5 +1,9 @@
 # Stewart Platform (Parallel Manipulator) — ROS 2 + Gazebo
+## Platform Model Preview
 
+<p align="center">
+  <img src="src/platform.png" alt="Stewart Platform Model" width="500">
+</p>
 A ROS 2 package providing a **Stewart platform (6-DoF parallel manipulator)** model for Gazebo Classic and a minimal control stack.
 
 - Gazebo SDF model + custom joint controller plugin
