@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ritwik/catkin_ws/src/stewart_platform_learning/src/stewart_platform/plugin/devel/setup.sh

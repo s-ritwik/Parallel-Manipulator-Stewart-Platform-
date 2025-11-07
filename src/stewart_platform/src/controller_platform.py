@@ -27,13 +27,13 @@ def send_sinusoidal_command():
     x_error_prev=0
     y_error_prev=0
     # Control gains
-    Kp = 0.4 # Proportional gain
-    Kd = 0.2# Derivative gain
+    Kp = 0.1 # Proportional gain
+    Kd = 0# Derivative gain
 
     # Sinusoidal parameters
     amplitude = 0.3  # Reduced amplitude for roll and pitch
     heave_amplitude = 0.6  # Reduced amplitude for heave
-    frequency = 1  # Reduced frequency
+    frequency = 0.5  # Reduced frequency
 
     # Initialize last command values for filtering
     last_roll_command = 0
@@ -43,7 +43,7 @@ def send_sinusoidal_command():
     last_x_command=0
     last_y_command=0
     # Filtering factor for low-pass filter
-    alpha = 0.2
+    alpha = 0.5
 
     # # Lists to store heave data
     # time_list = []
@@ -68,9 +68,9 @@ def send_sinusoidal_command():
         # desired_roll = amplitude * math.sin(frequency * current_time)
         # desired_pitch = amplitude * math.sin(frequency * current_time + math.pi / 2)
         # desired_heave = heave_amplitude * math.sin(frequency * current_time) + 0.4
-        desired_roll = 0
+        desired_roll = 0#+amplitude * math.sin(frequency * current_time)
         desired_pitch = 0
-        desired_heave = 0.3+heave_amplitude * math.sin(frequency * current_time) + 0.4
+        desired_heave = 0.+heave_amplitude * math.sin(frequency * current_time) 
         desired_x=0
         desired_y=0
         desired_yaw=0
@@ -136,7 +136,9 @@ def send_sinusoidal_command():
         command.angular.z = filtered_yaw_command
         command.linear.x = filtered_x_command
         command.linear.y = filtered_y_command
-        rospy.loginfo("Sending roll: %s, pitch: %s, heave: %s", filtered_roll_command, filtered_pitch_command, filtered_heave_command)
+        
+        rospy.loginfo("Sending r: %s, p: %s, Z: %s, X: %s, Y: %s, Yaw: %s", filtered_roll_command,
+     filtered_pitch_command, filtered_heave_command,filtered_x_command,filtered_y_command,filtered_yaw_command)
         pub.publish(command)
         rate.sleep()
 def animate(i):
@@ -168,8 +170,8 @@ if __name__ == '__main__':
         command_thread.start()
 
         # Start the real-time plotting
-        ani = FuncAnimation(plt.gcf(), animate, interval=100)
-        plt.show()
+        # ani = FuncAnimation(plt.gcf(), animate, interval=100)
+        # plt.show()
 
         # Wait for the command loop thread to finish
         command_thread.join()
