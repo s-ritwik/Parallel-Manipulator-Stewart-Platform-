@@ -1,7 +1,17 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
 	<model name="stewart">
-		<plugin name="joint_controller" filename="libjoint_controller.so"/>
+		<plugin name="joint_controller" filename="libstewart_joint_controller.so">
+			<ros>
+				<namespace>stewart</namespace>
+			</ros>
+			<gazebo_controller_init>
+				<propor>64.0</propor>
+				<integr>35.0</integr>
+				<deriv>0.5</deriv>
+				<init_legs_length>0.3</init_legs_length>
+			</gazebo_controller_init>
+		</plugin>
 		<joint name="piston1_prismatic_joint" type="prismatic">
 			<parent>piston1_cylinder_link</parent>
 			<child>piston1_shaft_link</child>

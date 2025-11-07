@@ -3,12 +3,21 @@
 
 	<world name="default">
 
+        <!-- System plugins are loaded via gazebo_ros gzserver.launch.py; no world plugins here -->
+
 		<include>
 			<uri>model://ground_plane</uri>
 		</include>
 
 		<include>
 			<uri>model://sun</uri>
+		</include>
+
+		<!-- Spawn the Stewart platform directly via world include -->
+		<include>
+			<uri>model://stewart</uri>
+			<name>stewart</name>
+			<pose>0 0 0 0 0 0</pose>
 		</include>
 
 		<scene>

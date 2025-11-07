@@ -1,0 +1,243 @@
+[0.042s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/rycker/projects/stewart_platform_learning']
+[0.042s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='list', build_base='build', ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/home/rycker/projects/stewart_platform_learning'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], topological_order=False, names_only=False, paths_only=True, topological_graph=False, topological_graph_dot=False, topological_graph_density=False, topological_graph_legend=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x749623a19900>, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x749623b5a410>, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x749623b5a410>>)
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.109s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.109s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/rycker/projects/stewart_platform_learning'
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extensions ['ignore', 'ignore_ament_install']
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'ignore'
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'ignore_ament_install'
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extensions ['colcon_pkg']
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'colcon_pkg'
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extensions ['colcon_meta']
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'colcon_meta'
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extensions ['ros']
+[0.109s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'ros'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extensions ['cmake', 'python']
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'cmake'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'python'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extensions ['python_setup_py']
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning) by extension 'python_setup_py'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extensions ['ignore', 'ignore_ament_install']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'ignore'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'ignore_ament_install'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extensions ['colcon_pkg']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'colcon_pkg'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extensions ['colcon_meta']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'colcon_meta'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extensions ['ros']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'ros'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extensions ['cmake', 'python']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'cmake'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'python'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extensions ['python_setup_py']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/gif) by extension 'python_setup_py'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/log) by extensions ['ignore', 'ignore_ament_install']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/log) by extension 'ignore'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/log) ignored
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extensions ['ignore', 'ignore_ament_install']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'ignore'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'ignore_ament_install'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extensions ['colcon_pkg']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'colcon_pkg'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extensions ['colcon_meta']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'colcon_meta'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extensions ['ros']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'ros'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extensions ['cmake', 'python']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'cmake'
+[0.122s] WARNING:colcon.colcon_cmake.package_identification.cmake:Ignoring '/home/rycker/projects/stewart_platform_learning/src/CMakeLists.txt' since it seems to be a toplevel CMake file generated by 'catkin_make'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'python'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extensions ['python_setup_py']
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src) by extension 'python_setup_py'
+[0.122s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'ignore'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'ignore_ament_install'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extensions ['colcon_pkg']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'colcon_pkg'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extensions ['colcon_meta']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'colcon_meta'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extensions ['ros']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'ros'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extensions ['cmake', 'python']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'cmake'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'python'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extensions ['python_setup_py']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros) by extension 'python_setup_py'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extension 'ignore'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extension 'ignore_ament_install'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extensions ['colcon_pkg']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extension 'colcon_pkg'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extensions ['colcon_meta']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extension 'colcon_meta'
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extensions ['ros']
+[0.123s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros) by extension 'ros'
+[0.124s] DEBUG:colcon.colcon_core.package_identification:Package '/home/rycker/projects/stewart_platform_learning/src/openai_ros/openai_ros' with type 'ros.catkin' and name 'openai_ros'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extensions ['ignore', 'ignore_ament_install']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extension 'ignore'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extension 'ignore_ament_install'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extensions ['colcon_pkg']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extension 'colcon_pkg'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extensions ['colcon_meta']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extension 'colcon_meta'
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extensions ['ros']
+[0.124s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/src/stewart_platform) by extension 'ros'
+[0.125s] DEBUG:colcon.colcon_core.package_identification:Package '/home/rycker/projects/stewart_platform_learning/src/stewart_platform' with type 'ros.catkin' and name 'stewart_platform'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extensions ['ignore', 'ignore_ament_install']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'ignore'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'ignore_ament_install'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extensions ['colcon_pkg']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'colcon_pkg'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extensions ['colcon_meta']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'colcon_meta'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extensions ['ros']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'ros'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extensions ['cmake', 'python']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'cmake'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'python'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extensions ['python_setup_py']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb) by extension 'python_setup_py'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extensions ['ignore', 'ignore_ament_install']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'ignore'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'ignore_ament_install'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extensions ['colcon_pkg']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'colcon_pkg'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extensions ['colcon_meta']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'colcon_meta'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extensions ['ros']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'ros'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extensions ['cmake', 'python']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'cmake'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'python'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extensions ['python_setup_py']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run) by extension 'python_setup_py'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extensions ['ignore', 'ignore_ament_install']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'ignore'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'ignore_ament_install'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extensions ['colcon_pkg']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'colcon_pkg'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extensions ['colcon_meta']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'colcon_meta'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extensions ['ros']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'ros'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extensions ['cmake', 'python']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'cmake'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'python'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extensions ['python_setup_py']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/files) by extension 'python_setup_py'
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extensions ['ignore', 'ignore_ament_install']
+[0.125s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'ignore'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'ignore_ament_install'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extensions ['colcon_pkg']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'colcon_pkg'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extensions ['colcon_meta']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'colcon_meta'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extensions ['ros']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'ros'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extensions ['cmake', 'python']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'cmake'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'python'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extensions ['python_setup_py']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/logs) by extension 'python_setup_py'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'ignore'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'ignore_ament_install'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extensions ['colcon_pkg']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'colcon_pkg'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extensions ['colcon_meta']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'colcon_meta'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extensions ['ros']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'ros'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extensions ['cmake', 'python']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'cmake'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'python'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extensions ['python_setup_py']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp) by extension 'python_setup_py'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extensions ['ignore', 'ignore_ament_install']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'ignore'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'ignore_ament_install'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extensions ['colcon_pkg']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'colcon_pkg'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extensions ['colcon_meta']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'colcon_meta'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extensions ['ros']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'ros'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extensions ['cmake', 'python']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'cmake'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'python'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extensions ['python_setup_py']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/latest-run/tmp/code) by extension 'python_setup_py'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extensions ['ignore', 'ignore_ament_install']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'ignore'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'ignore_ament_install'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extensions ['colcon_pkg']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'colcon_pkg'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extensions ['colcon_meta']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'colcon_meta'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extensions ['ros']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'ros'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extensions ['cmake', 'python']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'cmake'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'python'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extensions ['python_setup_py']
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258) by extension 'python_setup_py'
+[0.126s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'ignore_ament_install'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extensions ['colcon_pkg']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'colcon_pkg'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extensions ['colcon_meta']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'colcon_meta'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extensions ['ros']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'ros'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extensions ['cmake', 'python']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'cmake'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'python'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extensions ['python_setup_py']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/files) by extension 'python_setup_py'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'ignore_ament_install'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extensions ['colcon_pkg']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'colcon_pkg'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extensions ['colcon_meta']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'colcon_meta'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extensions ['ros']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'ros'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extensions ['cmake', 'python']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'cmake'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'python'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extensions ['python_setup_py']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/logs) by extension 'python_setup_py'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'ignore_ament_install'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extensions ['colcon_pkg']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'colcon_pkg'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extensions ['colcon_meta']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'colcon_meta'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extensions ['ros']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'ros'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extensions ['cmake', 'python']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'cmake'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'python'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extensions ['python_setup_py']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp) by extension 'python_setup_py'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extensions ['ignore', 'ignore_ament_install']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'ignore'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'ignore_ament_install'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extensions ['colcon_pkg']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'colcon_pkg'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extensions ['colcon_meta']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'colcon_meta'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extensions ['ros']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'ros'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extensions ['cmake', 'python']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'cmake'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'python'
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extensions ['python_setup_py']
+[0.127s] Level 1:colcon.colcon_core.package_identification:_identify(/home/rycker/projects/stewart_platform_learning/wandb/run-20240829_225703-y8qsd258/tmp/code) by extension 'python_setup_py'
+[0.127s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults

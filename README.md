@@ -1,103 +1,31 @@
-Clone of HadiYd with added controller
+# Stewart Platform (Parallel Manipulator) — ROS 2 + Gazebo
+## Platform Model Preview
 
-Simulating 6DOF movement of a stewart on gazebo
+<p align="center">
+  <img src="src/platform.png" alt="Stewart Platform Model" width="500">
+</p>
+A ROS 2 package providing a **Stewart platform (6-DoF parallel manipulator)** model for Gazebo Classic and a minimal control stack.
 
+- Gazebo SDF model + custom joint controller plugin
+- ROS 2 inverse kinematics (IK) node: pose → leg lengths
+- Optional sinusoidal command node for test motions
 
-# Stewart Platform Learning
-Set of tools and environments to implement Deep Reinforcement Learning (DRL) algorithms on Stewart Platfrom by parametric simulation in Gazebo and ROS.
+---
 
+## Requirements
 
-![](https://github.com/HadiYd/stewart_platform_learning/blob/main/gif/stewart_learning_.gif)
+- ROS 2 Humble (Python **3.10** runtime)
+- Gazebo **Classic** (gazebo11)
+- Eigen3 (for C++ IK)
+- `gazebo_ros_pkgs`
 
+> Use the system Python 3.10 that ships with ROS 2 Humble. Do **not** run nodes under conda Python 3.13.
 
-## Cloning the project as a workspace
-```
-git clone https://github.com/HadiYd/stewart_platform_learning.git
-```
+---
 
-## Build the controller plugin for controlling joints and changing the PID values.
-> **Plugin credit by:** [ros_sdf](https://github.com/daniel-s-ingram/ros_sdf) with modification of adding PID section to the code.
-```
-cd stewart_platform_learning/src/stewart_platform/plugin
-mkdir build
-cd build
-cmake ../
-make 
-```
-## Installing openai_ros and building the project
-```
-cd stewart_platform_learning/src
-git clone https://bitbucket.org/theconstructcore/openai_ros.git
-cd stewart_platform_learning
-catkin build
-source devel/setup.bash
-rosdep install openai_ros
-```
+## Build
 
-## Spawn the Stewart platform in Gazebo using launch file
-```
-roslaunch stewart_platform stewart.launch 
-```
-
-Use the Python controller in src of stewart_platform
-```
-cd stewart_platform_learning/src/stewart_platform/src
-code code4.py
-```
-Run this py file to get desired motions
-
-
-In case of an error in the subsequent launches, kill the previous running Gazebo server by:
-```
-killall -9 gzserver
-```
-If platform is still breaking ,run this in another terminal after roslaunch
-```
-rosrun stewart_platform DDPG_Continuous.py
-```
-
-## Running the deep reinforcement learning training scripts
-I use [wandb](https://wandb.ai/site) to log all the rewards and performance metrics. First pip install it, then create a free account to use it. 
-```
-pip install wandb
-
-wandb login
-```
-> **DRL algorithms credit by:** [Deep Reinforcement Learning in TensorFlow2](https://github.com/marload/DeepRL-TensorFlow2)
-
-### DDPG
-
-**Paper** [Continuous control with deep reinforcement learning](https://arxiv.org/abs/1509.02971)<br>
-**Author** Timothy P. Lillicrap, Jonathan J. Hunt, Alexander Pritzel, Nicolas Heess, Tom Erez, Yuval Tassa, David Silver, Daan Wierstra<br>
-**Method** OFF-Policy / Temporal-Diffrence / Model-Free<br>
-**Action** Continuous<br>
-
-
-#### Running the DDPG algorithm:
-```
-rosrun stewart_platform DDPG_Continuous.py 
-```
-
-### A3C
-
-**Paper** [Asynchronous Methods for Deep Reinforcement Learning](https://arxiv.org/abs/1602.01783)<br>
-**Author** Volodymyr Mnih, Adrià Puigdomènech Badia, Mehdi Mirza, Alex Graves, Timothy P. Lillicrap, Tim Harley, David Silver, Koray Kavukcuoglu<br>
-**Method** ON-Policy / Temporal-Diffrence / Model-Free<br>
-**Action** Discrete, Continuous<br>
-
-#### Running the A3C algorithm:
-```
-rosrun stewart_platform A3_algorithm_training.py 
-```
-
-### PPO
-
-**Paper** [Proximal Policy Optimization](https://arxiv.org/abs/1707.06347)<br>
-**Author** John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, Oleg Klimov<br>
-**Method** ON-Policy / Temporal-Diffrence / Model-Free<br>
-**Action** Discrete, Continuous<br>
-
-### Running the PPO algorithm:
-```
-rosrun stewart_platform PPO_Continuous.py 
-```
+```bash
+# from your ROS 2 workspace root
+colcon build --packages-select stewart_platform
+source install/setup.bash
