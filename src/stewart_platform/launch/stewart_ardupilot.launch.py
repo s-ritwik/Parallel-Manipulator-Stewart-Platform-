@@ -28,7 +28,7 @@ def generate_launch_description():
     )
 
     # Stewart SDF and plugin path as before
-    sdf_file = os.path.join(package_share, 'stewart_sdf_model', 'stewart_sdf.sdf')
+    sdf_file = os.path.join(package_share, 'stewart_sdf_model', 'stewart_fractal.sdf')
     plugin_dir = os.path.join(package_prefix, 'lib')
     model_dir = os.path.join(package_share, 'stewart')
 
