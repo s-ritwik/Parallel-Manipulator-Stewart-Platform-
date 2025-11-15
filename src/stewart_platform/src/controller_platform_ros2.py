@@ -37,8 +37,8 @@ class StewartCommandNode(Node):
         self.declare_parameter("kd", 0.0)
         self.declare_parameter("roll_amplitude", 0.0)
         self.declare_parameter("pitch_amplitude", 0.0)
-        self.declare_parameter("heave_amplitude", 0.2)
-        self.declare_parameter("frequency", 0.5)
+        self.declare_parameter("heave_amplitude", 0.65)
+        self.declare_parameter("frequency", 0.2)
         self.declare_parameter("filter_alpha", 0.5)
         self.declare_parameter("command_rate", 10.0)
 
@@ -69,8 +69,8 @@ class StewartCommandNode(Node):
         #     y=0.0,
         # )
         desired = CommandState(
-            roll=0,
-            pitch=-0.0,
+            roll=self.get_parameter("roll_amplitude").value * math.sin(freq * elapsed),
+            pitch=-self.get_parameter("pitch_amplitude").value * math.sin(freq * elapsed),
             heave=self.get_parameter("heave_amplitude").value * math.sin(freq * elapsed),
             yaw=0.0,
             x=0.0,
