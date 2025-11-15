@@ -6,9 +6,12 @@
 				<namespace>stewart</namespace>
 			</ros>
 			<gazebo_controller_init>
-				<propor>64.0</propor>
+				<!-- <propor>64.0</propor>
 				<integr>35.0</integr>
-				<deriv>0.5</deriv>
+				<deriv>0.5</deriv> -->
+				<propor>1000.0</propor>
+				<integr>400.0</integr>
+				<deriv>2.0</deriv>
 				<init_legs_length>0.3</init_legs_length>
 			</gazebo_controller_init>
 		</plugin>
@@ -633,14 +636,14 @@
 		<link name="platform_link">
 			<pose>0 0 2.0625 0 0 0</pose>
 			<inertial>
-				<mass>0.1</mass>
+				<mass>10</mass>
 				<inertia>
-					<ixx>0.06408333333333334</ixx>
+					<ixx>6.408333333333334</ixx>
 					<ixy>0</ixy>
 					<ixz>0</ixz>
-					<iyy>0.06408333333333334</iyy>
+					<iyy>6.408333333333334</iyy>
 					<iyz>0</iyz>
-					<izz>0.12800000000000003</izz>
+					<izz>12.800000000000003</izz>
 				</inertia>
 			</inertial>
 			<visual name="platform_link_visual">
