@@ -69,7 +69,7 @@ def generate_launch_description():
         arguments=[
             '-entity', 'stewart',
             '-file', sdf_file,
-            '-x', '5', '-y', '0', '-z', '0'
+            '-x', '3', '-y', '0', '-z', '0'
         ],
         output='screen',
     )
