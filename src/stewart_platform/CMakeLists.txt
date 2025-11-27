@@ -19,6 +19,16 @@ set(dependencies
   gazebo_ros
 )
 
+# Install the Python package into site-packages
+ament_python_install_package(${PROJECT_NAME})
+
+#Install entry-point for python scripts
+install(PROGRAMS
+  scripts/controller_platform_ros2.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
 add_executable(ik src/ik.cpp)
 ament_target_dependencies(ik ${dependencies})
 target_link_libraries(ik Eigen3::Eigen)
