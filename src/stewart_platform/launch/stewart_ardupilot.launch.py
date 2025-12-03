@@ -83,11 +83,14 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}],
     )
 
-    # # Platfor pose controller Node
-    # platform_pose_pub_node = Node(
-    #     package='stewart'
-    #     executable=''
-    # )
+    # Platfor pose controller Node
+    platform_pose_pub_node = Node(
+        package='stewart_platform',
+        executable='controller_platform_ros2.py',
+        name='platform_pose_controller',
+        output='screen',
+        parameters=[{'use_csv': True},{'csv_path': '/home/chiru/ship_deck_dataset/Fast_heave_D1H5_1.2.csv'}],
+    )
 
     return LaunchDescription([
         DeclareLaunchArgument('gui', default_value='true'),
@@ -101,4 +104,5 @@ def generate_launch_description():
         gazebo,
         spawn_entity,
         ik_node,
+        platform_pose_pub_node,
     ])
