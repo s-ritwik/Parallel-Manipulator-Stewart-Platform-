@@ -236,8 +236,8 @@ private:
       pose_msg.header.stamp = ros_node_->get_clock()->now();
       pose_msg.header.frame_id = "world";
 
-      pose_msg.pose.position.x = pose.Pos().X();
-      pose_msg.pose.position.y = pose.Pos().Y();
+      pose_msg.pose.position.x = -pose.Pos().Y();
+      pose_msg.pose.position.y = pose.Pos().X();
       pose_msg.pose.position.z = pose.Pos().Z();
 
       pose_msg.pose.orientation.x = pose.Rot().X();
