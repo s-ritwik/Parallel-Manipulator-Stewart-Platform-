@@ -12,12 +12,12 @@
 
 #include <geometry_msgs/msg/vector3.hpp>
 #include <rclcpp/rclcpp.hpp>
-#include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <std_msgs/msg/int32_multi_array.hpp>
 
 namespace gazebo
 {
+
 class SDFJointController : public ModelPlugin
 {
 public:
@@ -26,70 +26,115 @@ public:
   void Load(physics::ModelPtr model, sdf::ElementPtr sdf) override
   {
     if (!model) {
-      gzerr << "Invalid model pointer, plugin not loaded\n";
+      gzerr << "[SDFJointController] Invalid model pointer, plugin not loaded\n";
       return;
     }
 
     ros_node_ = gazebo_ros::Node::Get(sdf);
     if (!ros_node_) {
-      gzerr << "Failed to get gazebo_ros node, plugin not loaded\n";
+      gzerr << "[SDFJointController] Failed to get gazebo_ros node, plugin not loaded\n";
       return;
     }
 
     model_ = model;
-    joints_ = model_->GetJoints();
-    for (const auto & joint : joints_) {
-      if (joint->GetMsgType() == gazebo::msgs::Joint::PRISMATIC) {
+
+    // Collect only prismatic "piston" joints and sort them by name
+    auto all_joints = model_->GetJoints();
+    for (const auto & joint : all_joints) {
+      if (joint->GetMsgType() == gazebo::msgs::Joint::PRISMATIC &&
+          joint->GetName().find("piston") != std::string::npos)
+      {
         actuated_joints_.push_back(joint);
       }
     }
+
+    std::sort(
+      actuated_joints_.begin(), actuated_joints_.end(),
+      [](const physics::JointPtr & a, const physics::JointPtr & b) {
+        return a->GetName() < b->GetName();
+      });
+
     if (actuated_joints_.empty()) {
-      gzerr << "No prismatic joints found for Stewart controller.\n";
+      gzerr << "[SDFJointController] No prismatic 'piston' joints found.\n";
       return;
     }
 
-    RCLCPP_INFO(ros_node_->get_logger(),
-      "Custom joint controller attached to model '%s' with %zu total joints (%zu actuated)",
-      model_->GetName().c_str(), joints_.size(), actuated_joints_.size());
+    RCLCPP_INFO(
+      ros_node_->get_logger(),
+      "[SDFJointController] Model '%s': %zu actuated joints",
+      model_->GetName().c_str(), actuated_joints_.size());
+
+    for (const auto & joint : actuated_joints_) {
+      RCLCPP_INFO(
+        ros_node_->get_logger(),
+        "  Actuated joint: %s", joint->GetName().c_str());
+    }
 
     initPidFromSdf(sdf);
-    initLegLengthsFromSdf(sdf);
+    initLegHomeFromLimits();     // <— now matches the no-arg signature
     setupRosInterfaces();
   }
 
 private:
   void initPidFromSdf(const sdf::ElementPtr & sdf)
   {
-    const sdf::ElementPtr pid_block = sdf->HasElement("gazebo_controller_init")
+    const sdf::ElementPtr pid_block =
+      (sdf && sdf->HasElement("gazebo_controller_init"))
       ? sdf->GetElement("gazebo_controller_init")
       : nullptr;
 
+    // Default: RL-tuned gains (can be overridden from SDF)
     propor_ = getValue(pid_block, "propor", 64.0);
     integr_ = getValue(pid_block, "integr", 35.0);
-    deriv_ = getValue(pid_block, "deriv", 0.5);
+    deriv_  = getValue(pid_block, "deriv",  0.5);
 
-    pid_ = common::PID(propor_, integr_, deriv_);
+    double i_max   = getValue(pid_block, "i_max",   1.0);
+    double i_min   = getValue(pid_block, "i_min",  -1.0);
+    double cmd_max = getValue(pid_block, "cmd_max", 500.0);
+    double cmd_min = getValue(pid_block, "cmd_min",-500.0);
+
+    pid_ = common::PID(
+      propor_, integr_, deriv_,
+      i_max, i_min,
+      cmd_max, cmd_min);
 
     auto controller = model_->GetJointController();
     for (const auto & joint : actuated_joints_) {
       controller->SetPositionPID(joint->GetScopedName(), pid_);
     }
 
-    RCLCPP_INFO(ros_node_->get_logger(),
-      "Initial PID gains set to P=%.3f I=%.3f D=%.3f", propor_, integr_, deriv_);
+    RCLCPP_INFO(
+      ros_node_->get_logger(),
+      "[SDFJointController] PID: P=%.3f I=%.3f D=%.3f, cmd=[%.2f, %.2f]",
+      propor_, integr_, deriv_, cmd_min, cmd_max);
   }
 
-  void initLegLengthsFromSdf(const sdf::ElementPtr & sdf)
+  // Define "home" as mid-stroke (centre between lower and upper limits)
+  void initLegHomeFromLimits()
   {
-    const sdf::ElementPtr pid_block = sdf->HasElement("gazebo_controller_init")
-      ? sdf->GetElement("gazebo_controller_init")
-      : nullptr;
-
-    const double init_length = getValue(pid_block, "init_legs_length", 0.3);
-
     auto controller = model_->GetJointController();
+    initial_positions_.clear();
+    initial_positions_.reserve(actuated_joints_.size());
+
     for (const auto & joint : actuated_joints_) {
-      controller->SetPositionTarget(joint->GetScopedName(), init_length);
+      double lower = joint->LowerLimit(0);
+      double upper = joint->UpperLimit(0);
+      double center;
+
+      if (std::isfinite(lower) && std::isfinite(upper)) {
+        center = 0.5 * (lower + upper);
+      } else {
+        // Fallback: keep spawn value if limits are not finite
+        center = joint->Position(0);
+      }
+
+      initial_positions_.push_back(center);
+      controller->SetPositionTarget(joint->GetScopedName(), center);
+
+      RCLCPP_INFO(
+        ros_node_->get_logger(),
+        "[SDFJointController] Joint %s limits [%.4f, %.4f], center=%.4f",
+        joint->GetName().c_str(), lower, upper, center);
     }
   }
 
@@ -97,40 +142,43 @@ private:
   {
     using std::placeholders::_1;
 
+    // Topics are hard-coded to "/stewart/...".
+    // Ensure your IK and pose publisher use the same names.
     position_sub_ = ros_node_->create_subscription<std_msgs::msg::Float32MultiArray>(
-      "/" + model_->GetName() + "/legs_position_cmd", rclcpp::SystemDefaultsQoS(),
+      "/stewart/legs_position_cmd", rclcpp::SystemDefaultsQoS(),
       std::bind(&SDFJointController::handlePositionCommand, this, _1));
 
     pid_sub_ = ros_node_->create_subscription<geometry_msgs::msg::Vector3>(
-      "/" + model_->GetName() + "/pid_cmd", rclcpp::SystemDefaultsQoS(),
+      "/stewart/pid_cmd", rclcpp::SystemDefaultsQoS(),
       std::bind(&SDFJointController::handlePidCommand, this, _1));
 
     force_sub_ = ros_node_->create_subscription<std_msgs::msg::Float32MultiArray>(
-      "/" + model_->GetName() + "/legs_force_cmd", rclcpp::SystemDefaultsQoS(),
+      "/stewart/legs_force_cmd", rclcpp::SystemDefaultsQoS(),
       std::bind(&SDFJointController::handleForceCommand, this, _1));
 
     effort_pub_ = ros_node_->create_publisher<std_msgs::msg::Int32MultiArray>(
-      "/" + model_->GetName() + "/joint_efforts", rclcpp::SystemDefaultsQoS());
+      "/stewart/joint_efforts", rclcpp::SystemDefaultsQoS());
 
     update_connection_ = event::Events::ConnectWorldUpdateBegin(
       std::bind(&SDFJointController::onUpdate, this, std::placeholders::_1));
-
   }
 
+  // IK sends offsets from "home" (mid-stroke). We add these to the home positions.
   void handlePositionCommand(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
   {
-    if (msg->data.empty()) {
+    if (msg->data.size() < actuated_joints_.size()) {
+      RCLCPP_WARN(
+        ros_node_->get_logger(),
+        "[SDFJointController] legs_position_cmd size %zu < num actuated joints %zu",
+        msg->data.size(), actuated_joints_.size());
       return;
     }
 
     auto controller = model_->GetJointController();
-    auto joint_it = actuated_joints_.begin();
-    for (const float target : msg->data) {
-      if (joint_it == actuated_joints_.end()) {
-        break;
-      }
-      controller->SetPositionTarget((*joint_it)->GetScopedName(), target);
-      ++joint_it;
+    for (size_t i = 0; i < actuated_joints_.size(); ++i) {
+      const float delta = msg->data[i];   // +/- offset from mid-stroke
+      const double q_target = initial_positions_[i] + static_cast<double>(delta);
+      controller->SetPositionTarget(actuated_joints_[i]->GetScopedName(), q_target);
     }
   }
 
@@ -141,6 +189,11 @@ private:
     for (const auto & joint : actuated_joints_) {
       controller->SetPositionPID(joint->GetScopedName(), pid_);
     }
+
+    RCLCPP_INFO(
+      ros_node_->get_logger(),
+      "[SDFJointController] PID updated from /stewart/pid_cmd: P=%.3f I=%.3f D=%.3f",
+      msg->x, msg->y, msg->z);
   }
 
   void handleForceCommand(const std_msgs::msg::Float32MultiArray::SharedPtr msg)
@@ -174,8 +227,8 @@ private:
   }
 
   physics::ModelPtr model_;
-  std::vector<physics::JointPtr> joints_;
   std::vector<physics::JointPtr> actuated_joints_;
+  std::vector<double> initial_positions_;
 
   std::shared_ptr<gazebo_ros::Node> ros_node_;
   rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr position_sub_;
@@ -192,4 +245,5 @@ private:
 };
 
 GZ_REGISTER_MODEL_PLUGIN(SDFJointController)
+
 }  // namespace gazebo
