@@ -11,6 +11,7 @@
 #include <gazebo_ros/node.hpp>
 
 #include <geometry_msgs/msg/vector3.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <std_msgs/msg/int32_multi_array.hpp>
@@ -37,6 +38,13 @@ public:
     }
 
     model_ = model;
+    std::string top_link_name = "platform_link";
+    
+    top_link_ = model_->GetLink(top_link_name);
+    if (!top_link_) {
+      gzerr << "Top platform link '" << top_link_name
+            << "' not found in model '" << model_->GetName() << "'\n";
+    }
 
     // Collect only prismatic "piston" joints and sort them by name
     auto all_joints = model_->GetJoints();
@@ -159,6 +167,9 @@ private:
     effort_pub_ = ros_node_->create_publisher<std_msgs::msg::Int32MultiArray>(
       "/stewart/joint_efforts", rclcpp::SystemDefaultsQoS());
 
+    top_pose_pub_ = ros_node_->create_publisher<geometry_msgs::msg::PoseStamped>(
+      "/stewart/top_platform_pose", rclcpp::SystemDefaultsQoS());
+
     update_connection_ = event::Events::ConnectWorldUpdateBegin(
       std::bind(&SDFJointController::onUpdate, this, std::placeholders::_1));
   }
@@ -216,6 +227,26 @@ private:
       msg.data.push_back(static_cast<int32_t>(joint->GetForce(0)));
     }
     effort_pub_->publish(msg);
+
+    // publish top platform pose in world frame
+    if (top_link_ && top_pose_pub_) {
+      ignition::math::Pose3d pose = top_link_->WorldPose();
+
+      geometry_msgs::msg::PoseStamped pose_msg;
+      pose_msg.header.stamp = ros_node_->get_clock()->now();
+      pose_msg.header.frame_id = "world";
+
+      pose_msg.pose.position.x = -pose.Pos().Y();
+      pose_msg.pose.position.y = pose.Pos().X();
+      pose_msg.pose.position.z = pose.Pos().Z();
+
+      pose_msg.pose.orientation.x = pose.Rot().X();
+      pose_msg.pose.orientation.y = pose.Rot().Y();
+      pose_msg.pose.orientation.z = pose.Rot().Z();
+      pose_msg.pose.orientation.w = pose.Rot().W();
+
+      top_pose_pub_->publish(pose_msg);
+    }
   }
 
   static double getValue(const sdf::ElementPtr & parent, const std::string & key, double fallback)
@@ -227,6 +258,7 @@ private:
   }
 
   physics::ModelPtr model_;
+  physics::LinkPtr top_link_;
   std::vector<physics::JointPtr> actuated_joints_;
   std::vector<double> initial_positions_;
 
@@ -235,7 +267,8 @@ private:
   rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr force_sub_;
   rclcpp::Subscription<geometry_msgs::msg::Vector3>::SharedPtr pid_sub_;
   rclcpp::Publisher<std_msgs::msg::Int32MultiArray>::SharedPtr effort_pub_;
-
+  rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr top_pose_pub_;
+  
   event::ConnectionPtr update_connection_;
 
   double propor_{64.0};
