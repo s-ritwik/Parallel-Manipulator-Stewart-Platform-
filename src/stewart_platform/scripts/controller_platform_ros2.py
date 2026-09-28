@@ -159,12 +159,9 @@ class StewartCommandNode(Node):
         else:
             freq = float(self.get_parameter("frequency").value)
             desired = CommandState(
-                roll=float(self.get_parameter("roll_amplitude").value)
-                * math.sin(freq * elapsed),
-                pitch=float(self.get_parameter("pitch_amplitude").value)
-                * math.sin(freq * elapsed + math.pi / 2.0),
-                heave=float(self.get_parameter("heave_amplitude").value)
-                * math.sin(freq * elapsed),
+                roll=0, #float(self.get_parameter("roll_amplitude").value)* math.sin(freq * elapsed),
+                pitch=0, #float(self.get_parameter("pitch_amplitude").value)* math.sin(freq * elapsed + math.pi / 2.0),
+                heave=0, #float(self.get_parameter("heave_amplitude").value)* math.sin(freq * elapsed),
                 yaw=0.0,
             )
 

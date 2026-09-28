@@ -9,16 +9,18 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(gazebo_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(gazebo_ros REQUIRED)
+
+# Gazebo Harmonic (gz-sim 8) through the ROS 2 Jazzy vendor packages
+find_package(gz_sim_vendor REQUIRED)
+find_package(gz-sim REQUIRED)
+find_package(gz_plugin_vendor REQUIRED)
+find_package(gz-plugin REQUIRED COMPONENTS register)
 
 set(dependencies
   rclcpp
   std_msgs
   geometry_msgs
-  gazebo_msgs
-  gazebo_ros
 )
 
 # Install the Python package into site-packages
@@ -27,6 +29,7 @@ ament_python_install_package(${PROJECT_NAME})
 #Install entry-point for python scripts
 install(PROGRAMS
   scripts/controller_platform_ros2.py
+  scripts/base_xy_motion_ros2.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -40,8 +43,9 @@ install(TARGETS ik
 
 add_library(stewart_joint_controller SHARED src/plugins/joint_controller.cpp)
 ament_target_dependencies(stewart_joint_controller ${dependencies})
-target_include_directories(stewart_joint_controller PRIVATE
-  ${EIGEN3_INCLUDE_DIRS})
+target_link_libraries(stewart_joint_controller
+  gz-sim::gz-sim
+  gz-plugin::register)
 install(TARGETS stewart_joint_controller
   DESTINATION lib)
 
@@ -51,7 +55,9 @@ install(DIRECTORY
   stewart
   stewart_sdf_model
   world
+  aruco_visual_marker_fractal
+  iris_with_camera
   DESTINATION share/${PROJECT_NAME})
 
-ament_export_dependencies(${dependencies} Eigen3 gazebo_ros gazebo_msgs)
+ament_export_dependencies(${dependencies} Eigen3)
 ament_package()

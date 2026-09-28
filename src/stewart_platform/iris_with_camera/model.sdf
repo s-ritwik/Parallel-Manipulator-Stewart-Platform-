@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="iris_with_camera">
+    <!-- Upstream ardupilot_gazebo iris: rotors, lift-drag and ArduPilotPlugin (JSON, fdm port 9002) -->
+    <include merge="true">
+      <uri>model://iris_with_ardupilot</uri>
+    </include>
+
+    <!-- Down-looking camera. Camera optical axis is +X, pitched 90 deg to point down;
+         the image top points to the vehicle nose. 80 deg HFOV at 1280x720 matches
+         config/CamParameters_gazebo_720p.yml (fx = fy = 762.72). -->
+    <link name="camera_link">
+      <pose relative_to="iris_with_standoffs::base_link">0 0 -0.05 0 1.5707963267948966 0</pose>
+      <inertial>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>1e-6</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>1e-6</iyy><iyz>0</iyz>
+          <izz>1e-6</izz>
+        </inertia>
+      </inertial>
+      <sensor name="front_camera" type="camera">
+        <always_on>true</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>/iris/front_camera/image_raw</topic>
+        <camera>
+          <camera_info_topic>/iris/front_camera/camera_info</camera_info_topic>
+          <horizontal_fov>1.3962634</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>720</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100.0</far>
+          </clip>
+        </camera>
+      </sensor>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+      <parent>iris_with_standoffs::base_link</parent>
+      <child>camera_link</child>
+    </joint>
+  </model>
+</sdf>

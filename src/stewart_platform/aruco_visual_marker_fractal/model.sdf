@@ -11,18 +11,16 @@
           </box>
         </geometry>
         <material>
-          <script>
-            <uri>model://aruco_visual_marker_fractal/materials/scripts</uri>
-            <uri>model://aruco_visual_marker_fractal/materials/textures</uri>
-            <name>ArucoVisualMarkerFractal/Marker</name>
-          </script>
           <ambient>1 1 1 1</ambient>
           <diffuse>1 1 1 1</diffuse>
           <specular>0 0 0 1</specular>
-          <emissive>1 1 1 0</emissive>
-          <shader type='vertex'>
-            <normal_map>__default__</normal_map>
-          </shader>
+          <pbr>
+            <metal>
+              <albedo_map>model://aruco_visual_marker_fractal/materials/textures/aruco_mark_fractal.png</albedo_map>
+              <metalness>0.0</metalness>
+              <roughness>1.0</roughness>
+            </metal>
+          </pbr>
         </material>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <cast_shadows>1</cast_shadows>

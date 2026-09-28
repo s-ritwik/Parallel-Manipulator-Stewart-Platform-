@@ -13,13 +13,16 @@
   <depend>rclcpp</depend>
   <depend>geometry_msgs</depend>
   <depend>std_msgs</depend>
-  <depend>gazebo_ros</depend>
-  <depend>gazebo_msgs</depend>
-  <depend>gazebo</depend>
+  <depend>gz_sim_vendor</depend>
+  <depend>gz_plugin_vendor</depend>
   <depend>Eigen3</depend>
   <depend>eigen3_cmake_module</depend>
 
   <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_image</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

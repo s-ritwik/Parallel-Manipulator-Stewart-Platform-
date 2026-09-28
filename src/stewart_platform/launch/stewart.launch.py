@@ -1,37 +1,15 @@
+# Kept for backwards compatibility: the old file was an unported ROS 1 launch
+# (gazebo_ros spawn_model). Same as onlystewart.launch.py.
 import os
-import sys
 
-import launch
-import launch_ros.actions
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
-    ld = launch.LaunchDescription([
-        launch_ros.actions.Node(
-            package='gazebo_ros',
-            executable='spawn_model',
-            name='spawn_model',
-            output='screen',
-            parameters=[
-                {
-                    'robot_description': None
-                }
-            ]
-        ),
-        launch_ros.actions.Node(
-            package='stewart_platform',
-            executable='ik',
-            name='inverse_kinematic',
-            output='screen',
-            parameters=[
-                {
-                    'robot_description': None
-                }
-            ]
-        )
+    return LaunchDescription([
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(os.path.join(
+            get_package_share_directory('stewart_platform'), 'launch', 'onlystewart.launch.py')))
     ])
-    return ld
-
-
-if __name__ == '__main__':
-    generate_launch_description()
